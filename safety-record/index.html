@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سجل الأمن والسلامة ١٤٤٨هـ</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap">
+<style>
+/* تخطيط: شريط علوي أخضر داكن + صفحة كريمية بإطار ذهبي مزدوج، صفحة واحدة في كل مرة، فهرس جانبي، وشريط سابق/تالي ثابت أسفل الشاشة */
+:root{
+  --deep:#0f3d2e;
+  --deep-2:#16523d;
+  --green:#14533f;
+  --gold:#c4a052;
+  --gold-2:#a8853a;
+  --gold-soft:#f3e9d2;
+  --paper:#fbf8f0;
+  --ink:#1c2b24;
+  --muted:#5f6b62;
+  --line:#e6dcc4;
+  --font:"Tajawal","Segoe UI",Tahoma,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{font-size:12pt}
+body{margin:0;background:var(--deep);color:var(--ink);font-family:var(--font);font-weight:300;line-height:1.8}
+a{color:var(--green)}
+button{font-family:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--deep)}
+
+/* الشريط العلوي */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--deep);border-bottom:1px solid #2a5a47}
+.bar-in{max-width:900px;margin:0 auto;padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;gap:12px}
+.logo{width:52px;height:52px;flex:none;border-radius:12px;background:#fff;display:grid;place-items:center}
+.logo svg{width:38px;height:38px}
+.bar-text{flex:1;min-width:0;display:grid;line-height:1.5}
+.bar-text b{color:#fff;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-text span{color:var(--gold);font-size:.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.menu-btn{flex:none;display:inline-flex;align-items:center;gap:8px;background:#26402a;color:var(--gold);border:1.5px solid var(--gold-2);border-radius:14px;padding:8px 16px;font-size:1rem;font-weight:500;cursor:pointer}
+.menu-btn:hover{background:#2f4c33}
+
+/* الإطار الخارجي والصفحة */
+.stage{max-width:900px;margin:0 auto;padding-block:14px 110px;padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px))}
+.sheet{background:var(--paper);border:2px solid var(--gold);outline:5px solid var(--paper);outline-offset:-9px;border-radius:4px;padding:clamp(22px,5vw,44px) clamp(18px,5vw,48px);min-height:70vh}
+.page{display:grid;gap:22px;animation:fade .35s ease}
+@keyframes fade{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.page{animation:none}}
+
+/* عناوين */
+.display{margin:0;font-weight:800;color:var(--deep);font-size:clamp(2.6rem,10vw,4.4rem);line-height:1.15;text-wrap:balance}
+.display small{display:block;color:var(--gold-2);font-size:.62em;font-weight:800;margin-top:4px}
+.divider{display:flex;align-items:center;gap:16px;color:var(--gold);margin-block:4px}
+.divider::before,.divider::after{content:"";flex:1;height:1.5px;background:linear-gradient(to left,transparent,var(--gold),transparent)}
+.divider svg{width:28px;height:28px;fill:var(--gold)}
+.school{margin:0;font-weight:500;font-size:clamp(1.5rem,5.5vw,2rem);line-height:1.5;color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:1.05rem}
+.ph{display:grid;gap:2px}
+.ph .num{color:var(--gold-2);font-weight:500;font-size:.95rem;letter-spacing:.03em}
+.ph h2{margin:0;font-weight:800;color:var(--deep);font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.25;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+
+/* أشخاص */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.person{display:grid;justify-items:start;gap:8px}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--deep);display:grid;place-items:center}
+.avatar svg{width:42px;height:42px}
+.person span{color:var(--muted);font-size:1rem}
+.person b{font-weight:700;font-size:1.35rem;color:var(--ink);line-height:1.3}
+
+/* أرقام */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tile{background:var(--deep);border-radius:16px;padding:14px 10px;display:grid;justify-items:center;gap:0;text-align:center}
+.tile b{color:#fff;font-size:clamp(1.6rem,6vw,2.2rem);font-weight:700;line-height:1.3;font-variant-numeric:tabular-nums}
+.tile span{color:var(--gold);font-size:.92rem}
+
+/* بطاقات بيانات */
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.info div{padding:12px 16px;border-bottom:1px solid var(--line);border-left:1px solid var(--line);min-width:0;display:grid}
+.info dt{font-size:.85rem;color:var(--muted)}
+.info dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+.ltr{direction:ltr;text-align:right;font-variant-numeric:tabular-nums}
+
+.next{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;background:var(--gold-soft);border:1px solid var(--gold);border-radius:12px;padding:12px 16px}
+.next .k{font-size:.85rem;color:#7a5c17;font-weight:700}
+.next .v{font-weight:700}
+.next .d{color:var(--muted);font-size:.92rem}
+
+/* بنود الخطة */
+.plan{display:grid;gap:12px}
+.item{display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.item.is-next{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft)}
+.date{display:grid;border-left:1px solid var(--line);padding-left:12px;font-variant-numeric:tabular-nums}
+.date .day{font-size:.85rem;color:var(--gold-2);font-weight:700}
+.date .h{font-weight:700;color:var(--green)}
+.date .g{font-size:.88rem;color:var(--muted)}
+.body{min-width:0;display:grid;gap:4px}
+.body h3{margin:0;font-size:1.1rem;font-weight:700}
+.body p{margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.88rem;color:var(--muted)}
+.meta b{font-weight:500;color:var(--ink)}
+.note{font-size:.86rem;color:#7a5c17;background:var(--gold-soft);border-radius:6px;padding:2px 8px;justify-self:start}
+.side{display:grid;gap:8px;justify-items:end}
+.pill{font-size:.8rem;border-radius:999px;padding:1px 10px;font-weight:700;white-space:nowrap}
+.pill.past{background:#e3eee7;color:var(--green)}
+.pill.soon{background:var(--gold);color:#fff}
+.pill.later{background:var(--paper);color:var(--muted);border:1px solid var(--line)}
+
+/* أزرار */
+.docs{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:10px;padding:8px 14px;font-weight:500;font-size:.95rem;border:1px solid var(--green);color:var(--green);background:#fff}
+.btn:hover{background:#eef5f0}
+.btn.solid{background:var(--deep);color:#fff;border-color:var(--deep)}
+.btn.solid:hover{background:var(--deep-2)}
+.btn.sm{padding:4px 12px;font-size:.88rem}
+.btn svg{width:18px;height:18px;flex:none;fill:currentColor}
+.doc-box{border:1px dashed var(--gold);border-radius:12px;padding:14px 16px;display:grid;gap:10px;background:#fffdf7}
+.doc-box h3{margin:0;font-size:1rem;font-weight:700;color:var(--green)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:6px;align-content:start}
+.card h3{margin:0;font-size:1.08rem;font-weight:700;color:var(--green)}
+.card p{margin:0}
+.tag{justify-self:start;font-size:.8rem;border:1px dashed var(--gold-2);color:#7a5c17;border-radius:999px;padding:0 10px;font-weight:500}
+h3.group{margin:6px 0 0;font-size:1.15rem;font-weight:700;color:var(--deep);display:flex;align-items:center;gap:10px}
+h3.group::before{content:"";width:5px;height:1.2em;background:var(--gold);border-radius:2px}
+
+/* مجلدات */
+.folders{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.folder{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.folder:hover{border-color:var(--gold)}
+.folder .ic{width:46px;height:46px;border-radius:50%;background:var(--deep);display:grid;place-items:center}
+.folder .ic svg{width:22px;height:22px;fill:var(--gold)}
+.folder b{display:block;font-weight:700}
+.folder small{color:var(--muted);font-size:.86rem}
+.folder.hero{grid-column:1/-1;padding:18px;border:2px solid var(--gold);background:linear-gradient(135deg,#fff,var(--gold-soft))}
+.folder.hero .ic{width:60px;height:60px}
+.folder.hero .ic svg{width:28px;height:28px}
+.folder.hero b{font-size:1.2rem}
+
+.sign{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.sign div{border-top:2px solid var(--gold);padding-top:10px;display:grid}
+.sign span{font-size:.88rem;color:var(--muted)}
+.sign b{font-weight:700;font-size:1.08rem}
+
+
+/* ملخص اللقاء */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.step{background:#fff;border:1px solid var(--line);border-top:3px solid var(--deep);border-radius:12px;padding:14px 16px;display:grid;gap:6px;align-content:start;min-width:0}
+.step .ord{justify-self:start;background:var(--gold-soft);color:#7a5c17;font-weight:700;font-size:.85rem;border-radius:999px;padding:0 12px}
+.step h3{margin:0;font-size:1.08rem;font-weight:700;color:var(--deep)}
+.step ul{margin:0;padding-right:1.1em;display:grid;gap:4px}
+.step li::marker{color:var(--gold-2)}
+.step li b{font-weight:700}
+.goal{background:var(--deep);color:#fff;border-radius:12px;padding:16px 18px;display:grid;gap:4px;border-right:5px solid var(--gold)}
+.goal b{color:var(--gold);font-weight:700}
+
+/* جداول الخطط */
+.goals{background:#fff;border:1px solid var(--line);border-right:5px solid var(--gold);border-radius:12px;padding:14px 18px;display:grid;gap:4px}
+.goals b{color:var(--deep);font-weight:700}
+.goals ul{margin:0;padding-right:1.1em}
+.goals li::marker{color:var(--gold-2)}
+.ptables{display:grid;gap:16px}
+.ptable{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.pt-head{background:var(--deep);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pt-head h3{margin:0;font-size:1.08rem;font-weight:700}
+.pt-head .ord{background:var(--gold);color:var(--deep);font-weight:700;font-size:.85rem;border-radius:999px;padding:0 12px}
+.pt-row{display:grid;grid-template-columns:34px 1fr 210px auto;gap:12px;align-items:center;padding:10px 16px;border-top:1px solid var(--line)}
+.pt-row:nth-child(odd){background:#fdfbf5}
+.pt-row.team{grid-template-columns:34px 220px 1fr}
+.pt-n{width:28px;height:28px;border-radius:50%;background:var(--gold-soft);color:#7a5c17;display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.pt-a{min-width:0}
+.pt-a small{display:block;color:var(--muted)}
+.pt-r{color:var(--green);font-size:.92rem;font-weight:500;min-width:0}
+.pt-note{margin:0;padding:10px 16px;border-top:1px dashed var(--gold);color:#7a5c17;font-size:.92rem;background:var(--gold-soft)}
+@media (max-width:640px){
+  .pt-row,.pt-row.team{grid-template-columns:30px 1fr;gap:4px 10px}
+  .pt-row > .pt-r,.pt-row > .pill{grid-column:2;justify-self:start}
+}
+/* شريط التنقل السفلي */
+.pager{position:fixed;inset:auto 0 0;z-index:20;background:linear-gradient(to top,var(--deep) 70%,transparent);padding-block:16px calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.pager-in{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}
+.pg{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:10px 18px;font-size:1.05rem;font-weight:700;cursor:pointer;border:1.5px solid var(--gold);min-height:48px}
+.pg.next-b{background:var(--paper);color:var(--deep);justify-self:start}
+.pg.prev-b{background:transparent;color:var(--gold);justify-self:end}
+.pg[disabled]{opacity:.35;cursor:default}
+.pg svg{width:18px;height:18px;fill:currentColor}
+.count{color:#dbe9e2;font-size:.92rem;font-variant-numeric:tabular-nums;text-align:center;line-height:1.4}
+.count b{color:var(--gold);font-weight:700}
+
+/* الفهرس */
+.scrim{position:fixed;inset:0;z-index:40;background:rgba(8,28,20,.55)}
+.drawer{position:fixed;inset:0 0 0 auto;width:min(340px,88vw);z-index:41;background:var(--paper);border-left:3px solid var(--gold);display:grid;grid-template-rows:auto 1fr;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.drawer-h{background:var(--deep);color:var(--gold);padding:16px 18px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:1.15rem}
+.drawer-h button{background:none;border:1px solid var(--gold-2);color:var(--gold);border-radius:10px;padding:2px 12px;font-size:1rem;cursor:pointer}
+.toc{list-style:none;margin:0;padding:10px;overflow-y:auto;display:grid;gap:4px;align-content:start}
+.toc button{width:100%;text-align:right;display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;background:none;border:1px solid transparent;border-radius:10px;padding:9px 10px;font-size:1rem;color:var(--ink);cursor:pointer}
+.toc button:hover{background:#fff;border-color:var(--line)}
+.toc button[aria-current="true"]{background:#fff;border-color:var(--gold);font-weight:700}
+.toc .n{width:30px;height:30px;border-radius:50%;background:var(--deep);color:var(--gold);display:grid;place-items:center;font-size:.85rem;font-weight:700}
+
+@media (max-width:640px){
+  .tiles{grid-template-columns:1fr 1fr}
+  .item{grid-template-columns:1fr;gap:10px}
+  .date{border-left:0;padding-left:0;border-bottom:1px solid var(--line);padding-bottom:8px;grid-auto-flow:column;justify-content:start;gap:10px;align-items:baseline}
+  .side{justify-items:start;grid-auto-flow:column;justify-content:start;align-items:center}
+  .menu-btn{padding:8px 12px}
+  .logo{width:46px;height:46px}
+  .pg{padding:10px 14px}
+}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+<div dir="rtl" lang="ar">
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 48 48"><path d="M24 3 6 9v13c0 11 7.6 20.4 18 23 10.4-2.6 18-12 18-23V9L24 3z" fill="#14533f"/><path d="M24 3v42c10.4-2.6 18-12 18-23V9L24 3z" fill="#1b6a50"/><path d="M24 8 11 12.5V22c0 8 5.4 15 13 17 7.6-2 13-9 13-17v-9.5L24 8z" fill="none" stroke="#c4a052" stroke-width="2"/><path d="m18 23.5 4.2 4.2L31 19" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="bar-text">
+      <b>الابتدائية الثانية والثمانون للطفولة المبكرة</b>
+      <span>سجل الأمن والسلامة — ١٤٤٨هـ</span>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-controls="drawer" aria-expanded="false">≡ الفهرس</button>
+  </div>
+</header>
+
+<div class="stage">
+<main class="sheet" id="sheet">
+
+  <!-- ١ الغلاف -->
+  <section class="page" id="cover" data-title="الغلاف">
+    <h1 class="display">سجل الأمن<small>والسلامة</small></h1>
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 2.9 6.9 7.1.6-5.4 4.7 1.6 7L12 17.6 5.8 21.2l1.6-7L2 9.5l7.1-.6L12 2z"/></svg></div>
+    <div class="ph" style="gap:6px">
+      <p class="school">الابتدائية الثانية والثمانون<br>للطفولة المبكرة</p>
+      <p class="sub">الإدارة العامة للتعليم بمنطقة المدينة المنورة<br>— العام الدراسي ١٤٤٨هـ</p>
+    </div>
+    <div class="people">
+      <div class="person">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="#c4a052"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.6-4.6 4.2-7.3 8.5-7.3s7.9 2.7 8.5 7.3z"/></svg></div>
+        <span>مديرة المدرسة</span><b>مي أحمد خراز</b>
+      </div>
+      <div class="person">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="#c4a052"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h5l2 2h8A1.5 1.5 0 0 1 21 8.5v10a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></svg></div>
+        <span>منسقة الأمن والسلامة</span><b>أريج العجلان</b>
+      </div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><b>٣٥٢</b><span>طالبة</span></div>
+      <div class="tile"><b>٣٤</b><span>معلمة</span></div>
+      <div class="tile"><b>٨</b><span>إداريات</span></div>
+      <div class="tile"><b>١١</b><span>برنامجًا في الخطة</span></div>
+    </div>
+  </section>
+
+  <!-- ٢ بيانات المدرسة -->
+  <section class="page" id="school" data-title="بيانات المدرسة" hidden>
+    <div class="ph"><span class="num">الصفحة ٢</span><h2>بيانات المدرسة</h2></div>
+    <dl class="info">
+      <div><dt>إدارة التعليم</dt><dd>المدينة المنورة</dd></div>
+      <div><dt>اسم المدرسة</dt><dd>الابتدائية الثانية والثمانون للطفولة المبكرة</dd></div>
+      <div><dt>الرقم الوزاري</dt><dd class="ltr">41706</dd></div>
+      <div><dt>مديرة المدرسة</dt><dd>مي أحمد خراز</dd></div>
+      <div><dt>جوال المديرة</dt><dd class="ltr">0505328042</dd></div>
+      <div><dt>بريد المدرسة</dt><dd class="ltr">41706@mg.moe.gov.sa</dd></div>
+      <div><dt>عدد الطالبات (ابتدائي)</dt><dd>٣٥٢ طالبة</dd></div>
+      <div><dt>عدد المعلمات</dt><dd>٣٤ معلمة</dd></div>
+      <div><dt>عدد الإداريات</dt><dd>٨ إداريات</dd></div>
+      <div><dt>منسقة الأمن والسلامة</dt><dd>أريج العجلان</dd></div>
+    </dl>
+  </section>
+
+  <!-- ٣ الفصل الأول -->
+  <section class="page" id="term1" data-title="خطة الفصل الدراسي الأول" hidden>
+    <div class="ph"><span class="num">الصفحة ٣</span><h2>الفصل الدراسي الأول ١٤٤٨هـ</h2></div>
+    <p class="lead">الخطة الفصلية للبرامج التوعوية وخطط الإخلاء الافتراضية.</p>
+    <div class="plan" id="plan1"></div>
+    <div class="doc-box">
+      <h3>توثيق تفعيل البرامج وخطط الإخلاء للفصل الأول</h3>
+      <div class="docs">
+        <a class="btn solid" href="https://forms.cloud.microsoft/r/RgYiP8dbF9" target="_blank" rel="noopener">توثيق خطط الإخلاء الافتراضية</a>
+        <a class="btn" href="https://forms.cloud.microsoft/r/fzp41Sf3aC" target="_blank" rel="noopener">توثيق برامج الخطة الفصلية</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ٤ الفصل الثاني -->
+  <section class="page" id="term2" data-title="خطة الفصل الدراسي الثاني" hidden>
+    <div class="ph"><span class="num">الصفحة ٤</span><h2>الفصل الدراسي الثاني ١٤٤٨هـ</h2></div>
+    <div class="plan" id="plan2"></div>
+    <div class="doc-box">
+      <h3>توثيق تفعيل البرامج وخطط الإخلاء للفصل الثاني</h3>
+      <div class="docs">
+        <a class="btn solid" href="https://forms.cloud.microsoft/r/5yfY4scgSk" target="_blank" rel="noopener">توثيق خطط الإخلاء الافتراضية</a>
+        <a class="btn" href="https://forms.cloud.microsoft/r/04v9Aq43G4" target="_blank" rel="noopener">توثيق برامج الخطة الفصلية</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ٥ المبادرات والموسمية -->
+  <section class="page" id="initiatives" data-title="المبادرات والبرامج الموسمية" hidden>
+    <div class="ph"><span class="num">الصفحة ٥</span><h2>المبادرات والبرامج الموسمية</h2></div>
+    <h3 class="group">مبادرات طوال العام الدراسي</h3>
+    <div class="cards">
+      <div class="card"><h3>مبادرة روحك غالية</h3><p>تعزيز الوعي بالسلوكيات المرورية الصحيحة وأهمية حماية الأرواح.</p><div class="meta"><span>المنفذ: <b>منسقة الأمن والسلامة</b></span></div><a class="btn sm" style="justify-self:start" href="https://drive.google.com/drive/folders/10hXMi3WDQ74UDxIg5-4bUhV6E5ho0YVs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11.2V4.5a1.5 1.5 0 0 1 3 0v5.3l.6-.1a1.5 1.5 0 0 1 2.4.7l.4-.1a1.5 1.5 0 0 1 2.1 1l.3-.1a1.5 1.5 0 0 1 2.2 1.3V16c0 3.3-2.7 6-6 6h-1.2c-1.7 0-3.3-.8-4.4-2.1l-3.6-4.6a1.5 1.5 0 0 1 2.3-1.9z"/></svg>شواهد المبادرة</a></div>
+      <div class="card"><h3>مبادرة لحظة سلامة</h3><p>ترسيخ ثقافة الأمن والسلامة اليومية وتطبيق ممارسات الحماية السريعة والوقاية.</p><div class="meta"><span>المنفذ: <b>جميع منسوبات المدرسة والطالبات</b></span></div><a class="btn sm" style="justify-self:start" href="https://drive.google.com/drive/folders/1BVmXDXK9Rdj2ZzUM0bTA-gSHayU2ReOQ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11.2V4.5a1.5 1.5 0 0 1 3 0v5.3l.6-.1a1.5 1.5 0 0 1 2.4.7l.4-.1a1.5 1.5 0 0 1 2.1 1l.3-.1a1.5 1.5 0 0 1 2.2 1.3V16c0 3.3-2.7 6-6 6h-1.2c-1.7 0-3.3-.8-4.4-2.1l-3.6-4.6a1.5 1.5 0 0 1 2.3-1.9z"/></svg>شواهد المبادرة</a></div>
+      <div class="card"><h3>مبادرة التشجير</h3><p>تعزيز مبادئ سلامة البيئة وخلق بيئة تعليمية أكثر جاذبية.</p><div class="meta"><span>المنفذ: <b>جميع منسوبات المدرسة والطالبات</b></span></div></div>
+    </div>
+    <div class="docs"><a class="btn solid" href="https://forms.cloud.microsoft/r/4HQJziccWP" target="_blank" rel="noopener">توثيق المبادرات</a></div>
+    <h3 class="group">البرامج الموسمية</h3>
+    <div class="cards">
+      <div class="card"><h3>موسم الأمطار والسيول</h3><p>رفع جاهزية المدرسة وتوعية المنسوبات بكيفية تفادي مخاطر تجمعات المياه وتجنب مجاري السيول.</p><a class="btn sm" style="justify-self:start" href="https://drive.google.com/drive/folders/15z892LeRCzXlZaZG1xxDRCW78lExQm0-" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11.2V4.5a1.5 1.5 0 0 1 3 0v5.3l.6-.1a1.5 1.5 0 0 1 2.4.7l.4-.1a1.5 1.5 0 0 1 2.1 1l.3-.1a1.5 1.5 0 0 1 2.2 1.3V16c0 3.3-2.7 6-6 6h-1.2c-1.7 0-3.3-.8-4.4-2.1l-3.6-4.6a1.5 1.5 0 0 1 2.3-1.9z"/></svg>انقر — شواهد التوثيق</a></div>
+      <div class="card"><h3>شتاء آمن</h3><p>التوعية بمخاطر وسائل التدفئة غير الآمنة والوقاية من الحوادث المرتبطة بفصل الشتاء.</p><a class="btn sm" style="justify-self:start" href="https://drive.google.com/drive/folders/15z892LeRCzXlZaZG1xxDRCW78lExQm0-" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11.2V4.5a1.5 1.5 0 0 1 3 0v5.3l.6-.1a1.5 1.5 0 0 1 2.4.7l.4-.1a1.5 1.5 0 0 1 2.1 1l.3-.1a1.5 1.5 0 0 1 2.2 1.3V16c0 3.3-2.7 6-6 6h-1.2c-1.7 0-3.3-.8-4.4-2.1l-3.6-4.6a1.5 1.5 0 0 1 2.3-1.9z"/></svg>انقر — شواهد التوثيق</a></div>
+      <div class="card"><h3>موسم الغبار</h3><p>رفع الجاهزية في تطبيق الإجراءات الوقائية الصحية أثناء العواصف الترابية وموجات الغبار وحماية الجهاز التنفسي.</p><a class="btn sm" style="justify-self:start" href="https://drive.google.com/drive/folders/15z892LeRCzXlZaZG1xxDRCW78lExQm0-" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11.2V4.5a1.5 1.5 0 0 1 3 0v5.3l.6-.1a1.5 1.5 0 0 1 2.4.7l.4-.1a1.5 1.5 0 0 1 2.1 1l.3-.1a1.5 1.5 0 0 1 2.2 1.3V16c0 3.3-2.7 6-6 6h-1.2c-1.7 0-3.3-.8-4.4-2.1l-3.6-4.6a1.5 1.5 0 0 1 2.3-1.9z"/></svg>انقر — شواهد التوثيق</a></div>
+    </div>
+    <div class="docs"><a class="btn solid" href="https://forms.cloud.microsoft/r/UEFNJav57H" target="_blank" rel="noopener">توثيق البرامج الموسمية</a></div>
+  </section>
+
+  <!-- ٦ تقييم المخاطر والكروكي -->
+  <section class="page" id="risk" data-title="تقييم المخاطر والكروكي" hidden>
+    <div class="ph"><span class="num">الصفحة ٦</span><h2>تقييم المخاطر ومخططات المبنى</h2></div>
+    <p class="lead">نماذج تقييم المخاطر في المبنى المدرسي، ومخططات الأدوار والساحة الخارجية المعتمدة لمسارات الإخلاء ونقاط التجمع.</p>
+    <div class="folders">
+      <a class="folder hero" href="https://drive.google.com/drive/folders/155YPAMbnTKG73GnVTgubV2Q3rAWucRH0" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg></span>
+        <span><b>تقييم المخاطر</b><small>رصد المخاطر في المبنى والمرافق وإجراءات معالجتها</small></span>
+      </a>
+      <a class="folder hero" href="https://drive.google.com/drive/folders/1fIXlIciInwMk9MgJVPCRhaW-462FX1r_" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm2 2v6h6V5H5zm8 0v6h6V5h-6zm-8 8v6h6v-6H5zm8 0v6h6v-6h-6z"/></svg></span>
+        <span><b>كروكي الأدوار والساحة الخارجية</b><small>مخططات الأدوار ومسارات الخروج ونقطة التجمع</small></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ٧ الخطة الوقائية -->
+  <section class="page" id="preventive" data-title="الخطة الوقائية" hidden>
+    <div class="ph"><span class="num">الصفحة ٧</span><h2>الخطة الوقائية للعام الدراسي ١٤٤٨هـ</h2></div>
+    <p class="lead">تتضمن الخطة الوقائية بالمدرسة لعام ١٤٤٨هـ مجموعة من الإجراءات الاستباقية لضمان سلامة الطالبات والكادر التعليمي، وتشمل: تشكيل فرق الأمن والسلامة، وتجهيز مسارات الإخلاء، وتوفير أدوات الوقاية، وتنفيذ أنشطة توعوية. وقد تم تنفيذ جميع بنودها.</p>
+    <div class="goals"><b>أهداف الخطة</b><ul><li>تعزيز الوعي الصحي والوقائي لدى الطالبات والمنسوبات.</li><li>تطبيق معايير السلامة العامة في جميع مرافق المدرسة.</li><li>إدارة الطوارئ والأزمات بكفاءة.</li></ul></div>
+    <div class="ptables">
+      <div class="ptable"><div class="pt-head"><span class=ord>أولًا</span><h3>السلامة الصحية ومكافحة العدوى</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">توفير مستلزمات الوقاية (صابون، جل كحولي، مناديل ورقية) في كافة المرافق</span><span class="pt-r">الإدارة المدرسية</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">تكثيف أنشطة التوعية الصحية والوقائية للطالبات</span><span class="pt-r">الموجهة الصحية: ترفة العنزي</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">تفعيل آلية التواصل مع المركز الصحي — المشرفة: أ. عتاب سعد</span><span class="pt-r">الموجهة الصحية: ترفة العنزي</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">الإبلاغ عن الحالات المشتبه بها للمركز الصحي</span><span class="pt-r">الموجهة الصحية: ترفة العنزي</span><span class="pill past">تم التنفيذ ✔</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>ثانيًا</span><h3>خطة الإخلاء والطوارئ</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">إعداد خطة إخلاء موثقة وتدريب الهيئة التدريسية والطالبات عليها مرتين في العام الدراسي</span><span class="pt-r">منسقة الأمن والسلامة</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">التدريب على الإخلاء في مسارات آمنة في حالات الطوارئ (حرائق، كوارث)</span><span class="pt-r">منسقة الأمن والسلامة</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">تحديد نقاط تجمع آمنة داخل المدرسة وخارجها</span><span class="pt-r">منسقة الأمن والسلامة</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">تشكيل فريق الأمن والسلامة</span><span class="pt-r">مديرة المدرسة</span><span class="pill past">تم التنفيذ ✔</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>ثالثًا</span><h3>السلامة الفيزيائية والبيئة المدرسية</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">التأكد من توفر طفايات حريق كافية ومناسبة في جميع الطوابق والممرات</span><span class="pt-r">منسقة الأمن والسلامة</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">إجراء فحص دوري وصيانة لأنظمة الكهرباء والمختبرات</span><span class="pt-r">منسقة الأمن والسلامة</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">نشر ثقافة الهدوء والنظام وعدم التدافع في الممرات والسلالم</span><span class="pt-r">وكيلة شؤون الطالبات</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">توفير حقيبة إسعافات أولية مجهزة</span><span class="pt-r">الموجهة الصحية: ترفة العنزي</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٥</span><span class="pt-a">التأكد من حصول أغلب المنسوبات على دورة الإسعافات الأولية</span><span class="pt-r">مديرة المدرسة</span><span class="pill past">تم التنفيذ ✔</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>رابعًا</span><h3>مهام منسقة الأمن والسلامة</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">متابعة تطبيق معايير السلامة في كافة مرافق المدرسة</span><span class="pt-r">منسقة الأمن والسلامة</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">الإشراف على تنفيذ تجارب الإخلاء الافتراضية</span><span class="pt-r">منسقة الأمن والسلامة</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">توثيق سجلات الصيانة والفحص الفني</span><span class="pt-r">منسقة الأمن والسلامة</span><span class="pill past">تم التنفيذ ✔</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">نشر الوعي الوقائي عبر الإذاعة المدرسية واللوحات الإرشادية</span><span class="pt-r">منسقة الأمن والسلامة</span><span class="pill past">تم التنفيذ ✔</span></div>
+      </div>
+    </div>
+    <div class="doc-box"><h3>شواهد تنفيذ الخطة الوقائية</h3><div class="docs"><a class="btn solid" href="https://drive.google.com/drive/folders/1YRFFbkOd6Gb9q3XJSgyG213M4eX3Lg88" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11.2V4.5a1.5 1.5 0 0 1 3 0v5.3l.6-.1a1.5 1.5 0 0 1 2.4.7l.4-.1a1.5 1.5 0 0 1 2.1 1l.3-.1a1.5 1.5 0 0 1 2.2 1.3V16c0 3.3-2.7 6-6 6h-1.2c-1.7 0-3.3-.8-4.4-2.1l-3.6-4.6a1.5 1.5 0 0 1 2.3-1.9z"/></svg>انقر — رابط التوثيق</a></div></div>
+  </section>
+
+  <!-- ٨ خطة التهديدات والطوارئ -->
+  <section class="page" id="emergency" data-title="خطة التهديدات والطوارئ والأزمات" hidden>
+    <div class="ph"><span class="num">الصفحة ٨</span><h2>خطة المدرسة للتعامل مع التهديدات والطوارئ والأزمات</h2></div>
+    <p class="lead">التعليمات والإجراءات وتوزيع الأدوار. إعداد: منسقة الأمن والسلامة أريج العجلان.</p>
+    <div class="goal"><b>الهدف الأساسي</b><span>رفع مستوى الجاهزية، وحماية الطالبات ومنسوبات المدرسة، وتقليل المخاطر، وضمان التعامل المنظم مع الحالات الطارئة.</span></div>
+    <div class="ptables">
+      <div class="ptable"><div class="pt-head"><h3>فريق الطوارئ والأزمات وتوزيع الأدوار</h3></div>
+        <div class="pt-row team"><span class="pt-n">١</span><span class="pt-a"><b>قائدة فريق الطوارئ</b><small>مديرة المدرسة: مي أحمد خراز</small></span><span class="pt-r">اتخاذ القرار، وإعلان الاحتماء أو الإخلاء، والتواصل مع الجهات المختصة وأولياء الأمور.</span></div>
+        <div class="pt-row team"><span class="pt-n">٢</span><span class="pt-a"><b>منسقة الأمن والسلامة</b><small>أريج إبراهيم العجلان</small></span><span class="pt-r">تفعيل فريق الاستجابة السريعة، وتنسيق الإخلاء والاحتماء، وتحديد المناطق الآمنة، والجولة التفقدية بعد زوال الخطر.</span></div>
+        <div class="pt-row team"><span class="pt-n">٣</span><span class="pt-a"><b>الموجهة الصحية</b><small>ترفة العنزي</small></span><span class="pt-r">متابعة الحالات الصحية، وتقديم الإسعافات الأولية، وطلب المساعدة الطبية عند الحاجة.</span></div>
+        <div class="pt-row team"><span class="pt-n">٤</span><span class="pt-a"><b>الموجهة الطلابية</b><small>عائشة فلاته</small></span><span class="pt-r">تقديم الدعم النفسي للطالبات ومساندة المعلمات أثناء الحدث.</span></div>
+        <div class="pt-row team"><span class="pt-n">٥</span><span class="pt-a"><b>فريق الاستجابة السريعة</b><small>أعضاء لجنة الأمن والسلامة</small></span><span class="pt-r">التدخل الفوري عند الإنذار، وتأمين الممرات ومناطق التجمع، ومساندة الإخلاء والاحتماء، وحصر المنسوبات والطالبات.</span></div>
+        <div class="pt-row team"><span class="pt-n">٦</span><span class="pt-a"><b>المعلمات</b><small>جميع المعلمات</small></span><span class="pt-r">قيادة طالبات الفصل بهدوء، وتنفيذ الاحتماء أو الإخلاء، وحصر الطالبات والتأكد من عدم تخلف أي طالبة.</span></div>
+        <div class="pt-row team"><span class="pt-n">٧</span><span class="pt-a"><b>الإداريات</b><small>جميع الإداريات</small></span><span class="pt-r">مساندة فريق الطوارئ، وتنظيم الممرات والمخارج، والمساعدة في تسليم الطالبات وفق الخطة.</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>أولًا</span><h3>عند انطلاق الإنذار المبكر</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">التزام المعلمة بالهدوء والتحدث بنبرة صوت مطمئنة.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">إيقاف جميع الأنشطة فورًا.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">استخدام عبارات واضحة ومطمئنة لتوجيه الطالبات.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">ترك الألعاب والأقلام والمتعلقات الشخصية فورًا.</span><span class="pt-r">الطالبات</span></div>
+        <div class="pt-row"><span class="pt-n">٥</span><span class="pt-a">الاستماع إلى تعليمات المعلمة والالتزام بها.</span><span class="pt-r">الطالبات</span></div>
+        <div class="pt-row"><span class="pt-n">٦</span><span class="pt-a">تفعيل فريق الاستجابة السريعة (أعضاء لجنة الأمن والسلامة).</span><span class="pt-r">إدارة المدرسة / منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>ثانيًا</span><h3>سيناريوهات التعامل مع الخطر</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a"><b>الاحتماء الداخلي:</b> توجيه الطالبات إلى المنطقة الآمنة المحددة مسبقًا داخل المدرسة.</span><span class="pt-r">المعلمات / منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a"><b>الإخلاء الفوري:</b> نقل الطالبات بانتظام إلى منطقة التجمع الآمنة وفق التعليمات المعتمدة.</span><span class="pt-r">المعلمات / منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>ثالثًا</span><h3>إجراءات الاحتماء الداخلي</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">توجيه الطالبات بهدوء وانتظام دون ركض أو تدافع.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">اختيار أماكن آمنة بعيدة عن النوافذ والواجهات الزجاجية.</span><span class="pt-r">منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">يمكن أن تكون المنطقة الآمنة ممرات داخلية أو غرفًا محصنة أو قبوًا مناسبًا.</span><span class="pt-r">منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">عند الاحتماء داخل الفصل تختبئ الطالبات تحت الطاولات لحماية أنفسهن من الأجسام المتساقطة.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٥</span><span class="pt-a">عند الاحتماء في منطقة آمنة تجلس الطالبات على ركبهن، ويخفضن رؤوسهن ويغطينها وأعناقهن بأيديهن المتشابكة.</span><span class="pt-r">المعلمات</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>رابعًا</span><h3>إجراءات الإخلاء</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">التحرك في صفوف منتظمة وخط مستقيم دون ركض أو تدافع.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">الالتزام بالصمت قدر الإمكان لسماع التعليمات.</span><span class="pt-r">الطالبات</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">اتباع المعلمة إلى منطقة التجمع المحددة مسبقًا.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">عند الانتقال إلى القبو يُستخدم الدرج ويُمنع استخدام المصاعد.</span><span class="pt-r">منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٥</span><span class="pt-a">ترك جميع المتعلقات الشخصية وعدم العودة لأخذها.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٦</span><span class="pt-a">عند الحاجة إلى النقل بالحافلات تتولى إدارة المدرسة التنسيق وفق الخطة المعتمدة.</span><span class="pt-r">إدارة المدرسة</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>خامسًا</span><h3>السلوك أثناء الاحتماء</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">إشغال الطالبات بأنشطة مناسبة مثل قراءة القصص والأناشيد الجماعية.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">ممارسة تمارين التنفس للمساعدة على تقليل القلق والتوتر.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">تقديم الدعم النفسي للطالبات الخائفات باستخدام كلمات مطمئنة.</span><span class="pt-r">المعلمات / الموجهة الطلابية (عائشة فلاته)</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">الاستعانة بالموجهة الطلابية والموجهة الصحية لدعم المعلمات.</span><span class="pt-r">الموجهة الطلابية (عائشة فلاته) / الموجهة الصحية (ترفة العنزي)</span></div>
+        <div class="pt-row"><span class="pt-n">٥</span><span class="pt-a">تقديم الإسعافات الأولية عند الحاجة.</span><span class="pt-r">الموجهة الصحية (ترفة العنزي)</span></div>
+        <div class="pt-row"><span class="pt-n">٦</span><span class="pt-a">منع التصوير والتسجيل واستخدام الهواتف لهذا الغرض.</span><span class="pt-r">المعلمات / إدارة المدرسة</span></div>
+        <div class="pt-row"><span class="pt-n">٧</span><span class="pt-a">المحافظة على الهدوء والاستماع للتوجيهات الصادرة من إدارة المدرسة والجهات المختصة.</span><span class="pt-r">جميع المنسوبات</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>سادسًا</span><h3>دور الموجهة الصحية</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">متابعة الحالات الصحية للطالبات أثناء الحدث.</span><span class="pt-r">الموجهة الصحية (ترفة العنزي)</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">مساعدة المعلمات في تقديم الإسعافات الأولية.</span><span class="pt-r">الموجهة الصحية (ترفة العنزي)</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">التعامل مع الحالات التي تتطلب تدخلًا صحيًا وفق الإمكانات المتاحة.</span><span class="pt-r">الموجهة الصحية (ترفة العنزي)</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">دعم الطالبات اللاتي يعانين من الخوف الشديد أو ضيق التنفس، وطلب المساعدة الطبية عند الحاجة.</span><span class="pt-r">الموجهة الصحية (ترفة العنزي)</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>سابعًا</span><h3>بعد زوال الخطر</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">عدم تحريك الطالبات من أماكنهن إلا بعد صدور توجيه رسمي من إدارة المدرسة.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">التأكد من وجود جميع الطالبات وعدم تخلف أي طالبة.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">إعادة الطالبات إلى فصولهن بانتظام وفق التعليمات.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">قيام لجنة الأمن والسلامة بجولة تفقدية داخل المبنى وخارجه.</span><span class="pt-r">منسقة الأمن والسلامة (أريج إبراهيم العجلان) / لجنة الأمن والسلامة</span></div>
+        <div class="pt-row"><span class="pt-n">٥</span><span class="pt-a">الإبلاغ عن أي أجسام مشبوهة أو مخلفات قد تشكل خطرًا، وعدم الاقتراب منها أو لمسها.</span><span class="pt-r">جميع المنسوبات</span></div>
+        <div class="pt-row"><span class="pt-n">٦</span><span class="pt-a">منع التصوير والنشر عبر وسائل التواصل الاجتماعي.</span><span class="pt-r">إدارة المدرسة</span></div>
+        <div class="pt-row"><span class="pt-n">٧</span><span class="pt-a">تشجيع الطالبات على الالتزام بالتعليمات وتعزيز سلوكهن الإيجابي.</span><span class="pt-r">المعلمات</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>ثامنًا</span><h3>التعامل مع الأجسام المشبوهة</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">الابتعاد عن الجسم المشبوه وعدم لمسه أو محاولة فحصه.</span><span class="pt-r">جميع المنسوبات</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">عزل المنطقة المحيطة به ومنع الاقتراب منها.</span><span class="pt-r">منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">إبلاغ إدارة المدرسة فورًا.</span><span class="pt-r">جميع المنسوبات</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">إبلاغ الجهات المختصة وفق الإجراءات المعتمدة.</span><span class="pt-r">إدارة المدرسة</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>تاسعًا</span><h3>دور أولياء الأمور</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">عدم التوجه إلى المدرسة أثناء الحدث إلا بطلب رسمي؛ لتجنب الازدحام وإعاقة وصول فرق الطوارئ.</span><span class="pt-r">أولياء الأمور</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">التحلي بالهدوء وانتظار الرسائل والتوجيهات الرسمية.</span><span class="pt-r">أولياء الأمور</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">الاعتماد على القنوات الرسمية في تلقي المعلومات.</span><span class="pt-r">أولياء الأمور</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">عند السماح باستلام الطالبات يتم ذلك وفق آلية منظمة وبالتدريج لتجنب التكدس المروري.</span><span class="pt-r">إدارة المدرسة / أولياء الأمور</span></div>
+              <p class="pt-note">آلية التنفيذ: تتم توعية أولياء الأمور بهذه التعليمات عبر وسائل التواصل المعتمدة بالمدرسة.</p>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>عاشرًا</span><h3>بروتوكول إعلان زوال الخطر</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">لا تنتهي حالة الطوارئ إلا بعد صدور إشعار رسمي من الجهات المختصة.</span><span class="pt-r">إدارة المدرسة</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">توجيه المعلمات بشأن العودة إلى الوضع الطبيعي.</span><span class="pt-r">إدارة المدرسة</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">لا يُسمح للطالبات بمغادرة أماكنهن أو العودة إلى الفصول من تلقاء أنفسهن.</span><span class="pt-r">المعلمات</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">عند السماح باستلام الطالبات تُنظَّم عملية التسليم وفق الخطة المعتمدة.</span><span class="pt-r">إدارة المدرسة / منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+      </div>
+      <div class="ptable"><div class="pt-head"><span class=ord>الحادي عشر</span><h3>الاستعداد المسبق للطوارئ</h3></div>
+        <div class="pt-row"><span class="pt-n">١</span><span class="pt-a">إعداد خطة إخلاء واضحة ومحددة للمدرسة.</span><span class="pt-r">إدارة المدرسة / منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٢</span><span class="pt-a">تشكيل فريق الاستجابة السريعة من أعضاء لجنة الأمن والسلامة، وتوزيع المهام والمسؤوليات.</span><span class="pt-r">إدارة المدرسة / منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٣</span><span class="pt-a">تدريب منسوبات المدرسة على الفرضيات المحتملة.</span><span class="pt-r">منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٤</span><span class="pt-a">تجهيز النماذج والبطاقات الخاصة بالتعامل مع حالات الطوارئ.</span><span class="pt-r">منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٥</span><span class="pt-a">تحديد المناطق الآمنة ومناطق التجمع مسبقًا.</span><span class="pt-r">منسقة الأمن والسلامة (أريج إبراهيم العجلان)</span></div>
+        <div class="pt-row"><span class="pt-n">٦</span><span class="pt-a">تجهيز آلية التواصل مع أولياء الأمور والجهات المختصة والنقل المدرسي.</span><span class="pt-r">إدارة المدرسة</span></div>
+      </div>
+    </div>
+    <div class="goals"><b>إقرار المنسوبات</b><p style="margin:0">وقّعت منسوبات المدرسة (٣٤ معلمة و٨ إداريات) على الاطلاع على الخطة والالتزام بتنفيذها، وعلى حضور ورشة التدريب على الإخلاء في حال التهديدات الأمنية والطوارئ والأزمات.</p></div>
+    <div class="doc-box"><h3>شواهد خطة التهديدات والطوارئ والأزمات وورشة التدريب</h3><div class="docs"><a class="btn solid" href="https://drive.google.com/drive/folders/18jbpAtp2KY6q09ODXAvbNaOA3TFuiVVb" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11.2V4.5a1.5 1.5 0 0 1 3 0v5.3l.6-.1a1.5 1.5 0 0 1 2.4.7l.4-.1a1.5 1.5 0 0 1 2.1 1l.3-.1a1.5 1.5 0 0 1 2.2 1.3V16c0 3.3-2.7 6-6 6h-1.2c-1.7 0-3.3-.8-4.4-2.1l-3.6-4.6a1.5 1.5 0 0 1 2.3-1.9z"/></svg>انقر — رابط التوثيق</a></div></div>
+  </section>
+
+  <!-- ٩ الشواهد -->
+  <section class="page" id="evidence" data-title="شواهد التوثيق" hidden>
+    <div class="ph"><span class="num">الصفحة ٩</span><h2>شواهد التوثيق</h2></div>
+    <p class="lead">مجلدات الشواهد والصور والشهادات في Google Drive، وتحتاج صلاحية العرض.</p>
+    <div class="folders">
+      <a class="folder hero" href="https://drive.google.com/drive/folders/1O-JHsxYeOGqiMY17ddFu6blgMesGDLqK" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>شواهد التنفيذ</b><small>شواهد تنفيذ برامج الخطة وخطط الإخلاء</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/15z892LeRCzXlZaZG1xxDRCW78lExQm0-" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>الأمن والسلامة ١٤٤٨</b><small>المجلد الرئيسي لجميع شواهد السجل</small></span></a>
+      <a class="folder" href="https://q.me-qr.com/js7nfrbt" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm8-2h2v2h-2v-2zm4 0h4v2h-4v-2zm-4 4h2v4h-2v-4zm4 0h2v2h2v4h-4v-6z"/></svg></span><span><b>شواهد توثيق الأمن والسلامة</b><small>رابط الباركود</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/13D6eVYTZNjIxzHdWA-dbvqCOvBpQ-Efi" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></span><span><b>تعاميم الأمن والسلامة</b><small>التعاميم والإجراءات الرسمية الواردة</small></span></a>
+      <a class="folder" href="plans/preventive-plan-1448.pdf" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></span><span><b>الخطة الوقائية للعام الدراسي ١٤٤٨هـ</b><small>ملف PDF</small></span></a>
+      <a class="folder" href="plans/emergency-plan-1448.pdf" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></span><span><b>خطة المدرسة للتعامل مع التهديدات والطوارئ والأزمات</b><small>ملف PDF</small></span></a>
+    </div>
+    <h3 class="group">الفريق والتدريب</h3>
+    <div class="folders">
+      <a class="folder" href="https://drive.google.com/drive/folders/1CI8-7EPvUIX0SPOXM2WRaC2mFbylUWDC" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>اللجان والفرق ١٤٤٨</b><small>تشكيل فريق الأمن والسلامة</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/1ySKmrjE3dvqSVSYYIkF6gYETYqAcja9H" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>اجتماعات فريق الأمن والسلامة</b><small>محاضر الاجتماعات وتوصياتها</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/1ocIsTx2joVTGUrehJ2_-YmV533M-_f_9" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>دورات منسقة الأمن والسلامة</b><small>الشهادات والدورات التدريبية</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/1LWWuujtsmcmqzhXetPxtQw2DJnPW8DJh" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>ورش ولقاءات التدريب المنفذة</b><small>الورش واللقاءات التدريبية للمنسوبات</small></span></a>
+    </div>
+    <h3 class="group">التوعية والمبادرات</h3>
+    <div class="folders">
+      <a class="folder" href="https://drive.google.com/drive/folders/1LjTWCoO0ZILa5JFEKsj06vq_-OQlOXep" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>إذاعات الأمن والسلامة</b><small>الإذاعات المدرسية التوعوية</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/10hXMi3WDQ74UDxIg5-4bUhV6E5ho0YVs" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>مبادرة روحك غالية</b><small>شواهد تنفيذ المبادرة</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/1BVmXDXK9Rdj2ZzUM0bTA-gSHayU2ReOQ" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>مبادرة لحظة سلامة</b><small>شواهد تنفيذ المبادرة</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/1AYxe4Xs-gANkj8xfCs7l4JZVstchzrMi" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>اليوم العالمي للإسعافات الأولية</b><small>البروشور وإعلان المبادرة</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/1fBIRkv4P4eemW13NuxPTo0OPoKVYysF2" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>مبادرة كلنا مسعف</b><small>شهادات دورة الإسعافات الأولية</small></span></a>
+    </div>
+    <h3 class="group">المتابعة والبلاغات</h3>
+    <div class="folders">
+      <a class="folder" href="https://drive.google.com/drive/folders/18lP1Ks-q52kkdp9vQmkl1jnJzGDb-XDD" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>الحالات الصحية والخاصة</b><small>متابعة الطالبات ذوات الحالات الصحية والخاصة</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/1r6RqHq2IsbqLrXa6PE-onbCdacyDj-Eg" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>بلاغات الدعم الموحد</b><small>البلاغات المرفوعة ومتابعة معالجتها</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/1mHHphFi7EQk_veuA_cyGOLoAen9SWvbE" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>استمارة تقييم الأمن والسلامة</b><small>استمارات التقييم الدوري</small></span></a>
+      <a class="folder" href="https://drive.google.com/drive/folders/1m8FiZL_j_KEbBlAsiQarrwMdZSMC6V_q" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>متابعة النظافة والصيانة</b><small>جولات المتابعة وطلبات الصيانة</small></span></a>
+    </div>
+    <h3 class="group">الشكر والتقدير</h3>
+    <div class="folders">
+      <a class="folder" href="https://drive.google.com/drive/folders/1EsfUB8nvt7m1rxTRPIIZ8WYqfvzAJkkG" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span><span><b>الشكر والتقدير</b><small>خطابات وشهادات الشكر</small></span></a>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<nav class="pager" aria-label="التنقل بين الصفحات">
+  <div class="pager-in">
+    <button class="pg prev-b" id="prevBtn" type="button"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6-1.4-1.4 4.6-4.6-4.6-4.6z"/></svg>السابق</button>
+    <div class="count" id="count"></div>
+    <button class="pg next-b" id="nextBtn" type="button">التالي<svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6 1.4-1.4L11.8 12l4.6-4.6z"/></svg></button>
+  </div>
+</nav>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="فهرس السجل">
+  <div class="drawer-h"><span>فهرس السجل</span><button type="button" id="closeBtn">إغلاق</button></div>
+  <ol class="toc" id="toc"></ol>
+</aside>
+
+</div>
+
+<script>
+const EVID="https://drive.google.com/drive/folders/1O-JHsxYeOGqiMY17ddFu6blgMesGDLqK";
+const ALL="جميع منسوبات المدرسة والطالبات", COORD="منسقة الأمن والسلامة";
+const plan1=[
+ {name:"الأسبوع التمهيدي",day:"",h:"١٧–٢١/٠٣/١٤٤٨هـ",g:"٣٠/٠٨ – ٠٣/٠٩/٢٠٢٦م",iso:"2026-09-03",by:COORD,desc:"تهيئة الطالبات وتعريفهن بإرشادات الأمن والطوارئ ونشر ثقافة السلامة العامة."},
+ {name:"خطة الإخلاء الأولى",day:"الثلاثاء",h:"٢٦/٠٣/١٤٤٨هـ",g:"٠٨/٠٩/٢٠٢٦م",iso:"2026-09-08",by:ALL,desc:"تدريب عملي افتراضي يحاكي حالات الطوارئ بهدف التأكد من التزام الجميع بالمهام المحددة وسرعة الخروج الآمن.",evac:1},
+ {name:"اليوم العربي للأرصاد الجوية",day:"",h:"٠٤/٠٤/١٤٤٨هـ",g:"١٥/٠٩/٢٠٢٦م",iso:"2026-09-15",by:COORD,desc:"تنفيذ برنامج توعوي ومسابقات تثقيفية للتعريف بأهمية الأرصاد وتأثير التقلبات الجوية."},
+ {name:"اليوم العالمي للحد من الكوارث",day:"",h:"٠٢/٠٥/١٤٤٨هـ",g:"١٣/١٠/٢٠٢٦م",iso:"2026-10-13",by:ALL,desc:"تفعيل فرضية إخلاء وتوعية بأساليب الحد من المخاطر ورفع مستوى الاستجابة للكوارث."},
+ {name:"برنامج السلامة والوعي الوقائي المهني",day:"",h:"١٥/٠٥/١٤٤٨هـ",g:"٢٦/١٠/٢٠٢٦م",iso:"2026-10-26",by:COORD,desc:"تنفيذ البرنامج من خلال مسابقات توعوية للمحافظة على بيئة مدرسية آمنة خالية من المخاطر الإنشائية والتشغيلية."},
+ {name:"خطة الإخلاء الافتراضية الثانية",day:"الثلاثاء",h:"٢٨/٠٦/١٤٤٨هـ",g:"٠٨/١٢/٢٠٢٦م",iso:"2026-12-08",by:ALL,desc:"تدريب عملي افتراضي يحاكي حالات الطوارئ بهدف التأكد من التزام الجميع بالمهام المحددة وسرعة الخروج الآمن.",evac:1}
+];
+const plan2=[
+ {name:"خطة الإخلاء الثالثة",day:"الثلاثاء",h:"١٨/٠٨/١٤٤٨هـ",g:"٢٦/٠١/٢٠٢٧م",iso:"2027-01-26",by:ALL,desc:"تطوير الفرضيات لقياس مدى تحسن سرعة الاستجابة ومعالجة الملاحظات السابقة.",evac:1},
+ {name:"تفعيل اليوم العالمي للدفاع المدني",day:"",h:"٠٩/١٠/١٤٤٨هـ",g:"١٧/٠٣/٢٠٢٧م",iso:"2027-03-17",by:"منسقة الأمن والسلامة وصديقات السلامة",desc:"التعريف بأهمية الدفاع المدني بالمملكة ودور رجال الدفاع في حماية الممتلكات والأرواح والخدمة المجتمعية.",note:"التاريخ الرسمي ١ مارس ٢٠٢٧م، وعُدّل بما يتناسب مع أسابيع الدراسة الفعلية"},
+ {name:"خطة الإخلاء الرابعة",day:"الثلاثاء",h:"٢٢/١٠/١٤٤٨هـ",g:"٣٠/٠٣/٢٠٢٧م",iso:"2027-03-30",by:ALL,desc:"تطوير الفرضيات لقياس مدى تحسن سرعة الاستجابة ومعالجة الملاحظات السابقة.",evac:1,note:"التاريخ الرسمي ٢٨ أبريل ٢٠٢٧م، وعُدّل بما يتناسب مع أسابيع الدراسة الفعلية"},
+ {name:"السلامة المرورية",day:"",h:"١٨/١١/١٤٤٨هـ",g:"٢٥/٠٤/٢٠٢٧م",iso:"2027-04-25",by:ALL,desc:"تثقيف الطالبات بأهمية القواعد المرورية وفهم اللوحات الإرشادية لضمان سلامتهن أثناء الذهاب والعودة."},
+ {name:"اليوم العالمي للبيئة",day:"",h:"٢٨/١٢/١٤٤٨هـ",g:"٠٣/٠٦/٢٠٢٧م",iso:"2027-06-03",by:ALL,desc:"نشر الوعي بأهمية الحفاظ على البيئة المدرسية والمحيط العام وتعزيز السلوكيات الإيجابية تجاهها."}
+];
+const forms={plan1:{evac:"https://forms.cloud.microsoft/r/RgYiP8dbF9",prog:"https://forms.cloud.microsoft/r/fzp41Sf3aC"},plan2:{evac:"https://forms.cloud.microsoft/r/5yfY4scgSk",prog:"https://forms.cloud.microsoft/r/04v9Aq43G4"}};
+const today=new Date();today.setHours(0,0,0,0);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function render(id,list){
+  document.getElementById(id).innerHTML=list.map(p=>{
+    const past=new Date(p.iso+"T00:00:00")<today;
+    const st=past?'<span class="pill past">تم التنفيذ</span>':'';
+    return `<article class="item">
+      <div class="date">${p.day?`<span class="day">${esc(p.day)}</span>`:''}<span class="h">${esc(p.h)}</span><span class="g">${esc(p.g)}</span></div>
+      <div class="body"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
+        <div class="meta"><span>الجهة المنفذة: <b>${esc(p.by)}</b></span><span>المستفيدات: <b>${ALL}</b></span></div>
+        ${p.note?`<span class="note">${esc(p.note)}</span>`:''}</div>
+      <div class="side">${st}<a class="btn sm" href="${EVID}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11.2V4.5a1.5 1.5 0 0 1 3 0v5.3l.6-.1a1.5 1.5 0 0 1 2.4.7l.4-.1a1.5 1.5 0 0 1 2.1 1l.3-.1a1.5 1.5 0 0 1 2.2 1.3V16c0 3.3-2.7 6-6 6h-1.2c-1.7 0-3.3-.8-4.4-2.1l-3.6-4.6a1.5 1.5 0 0 1 2.3-1.9z"/></svg>شواهد التنفيذ</a></div>
+    </article>`}).join("");
+}
+render("plan1",plan1);render("plan2",plan2);
+
+/* التنقل بين الصفحات */
+const pages=[...document.querySelectorAll(".page")];
+const toc=document.getElementById("toc");
+const ar=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
+toc.innerHTML=pages.map((p,i)=>`<li><button type="button" data-i="${i}"><span class="n">${ar(i+1)}</span><span>${p.dataset.title}</span></button></li>`).join("");
+let cur=0;
+function show(i,push){
+  cur=Math.max(0,Math.min(pages.length-1,i));
+  pages.forEach((p,k)=>p.hidden=k!==cur);
+  document.getElementById("prevBtn").disabled=cur===0;
+  document.getElementById("nextBtn").disabled=cur===pages.length-1;
+  document.getElementById("count").innerHTML=`<b>${ar(cur+1)}</b> / ${ar(pages.length)}<br>${pages[cur].dataset.title}`;
+  toc.querySelectorAll("button").forEach((b,k)=>b.setAttribute("aria-current",k===cur?"true":"false"));
+  if(push){ if(location.hash!=="#"+pages[cur].id) location.hash=pages[cur].id; window.scrollTo({top:0,behavior:"auto"}); }
+}
+function fromHash(){const id=location.hash.slice(1);const i=pages.findIndex(p=>p.id===id);show(i<0?0:i,false);}
+document.getElementById("prevBtn").onclick=()=>show(cur-1,true);
+document.getElementById("nextBtn").onclick=()=>show(cur+1,true);
+const drawer=document.getElementById("drawer"),scrim=document.getElementById("scrim"),menuBtn=document.getElementById("menuBtn");
+function openD(o){drawer.hidden=!o;scrim.hidden=!o;menuBtn.setAttribute("aria-expanded",o?"true":"false");if(o)toc.querySelector('[aria-current="true"]')?.focus();}
+menuBtn.onclick=()=>openD(true);
+document.getElementById("closeBtn").onclick=()=>openD(false);
+scrim.onclick=()=>openD(false);
+toc.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;openD(false);show(+b.dataset.i,true);});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")openD(false);if(!drawer.hidden)return;if(e.key==="ArrowLeft")show(cur+1,true);if(e.key==="ArrowRight")show(cur-1,true);});
+window.addEventListener("hashchange",fromHash);
+fromHash();
+</script>
+</body>
+</html>
